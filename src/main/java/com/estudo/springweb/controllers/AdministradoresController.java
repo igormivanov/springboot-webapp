@@ -36,6 +36,28 @@ public class AdministradoresController {
 		return "redirect:/administradores";
 	}
 	
+	@GetMapping("/administradores/{id}")
+	public String busca(@PathVariable int id, Model model) {
+		try {
+			model.addAttribute("administrador", administradoresRepository.findById(id).get());
+		} catch (Exception err) {
+			return "redirect:/administradores";
+		}
+		return "/administradores/editar";
+	}
+	
+	@PostMapping("/administradores/{id}/atualizar")
+	public String atualizar(@PathVariable int id, Administrador administrador) {
+		// if(!administradoresRepository.exist(id)
+		if(!administradoresRepository.existsById(id)) {
+			return "redirect:/administradores";
+		}
+		
+		administradoresRepository.save(administrador);
+		
+		return "/administradores/editar";
+	}
+	
 	@GetMapping("/administradores/{id}/excluir")
 	public String excluir(@PathVariable int id) {
 		administradoresRepository.deleteById(id);
