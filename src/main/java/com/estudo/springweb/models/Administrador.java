@@ -65,7 +65,7 @@ public class Administrador implements Serializable{
 	}
 
 	public String getSenha() {
-		return senha.substring(0, 3) + "****";
+		return senha;
 	}
 
 	public void setSenha(String senha) {
