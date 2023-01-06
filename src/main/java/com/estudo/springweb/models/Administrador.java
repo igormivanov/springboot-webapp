@@ -1,7 +1,5 @@
 package com.estudo.springweb.models;
 
-import java.io.Serializable;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,65 +9,61 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "administradores")
-public class Administrador implements Serializable{
+public class Administrador {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
+  private int id;
 
-	private static final long serialVersionUID = 1L;
+  @Column(name = "nome", length = 100, nullable = false)
+  private String nome;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
-	
-	@Column(name = "nome", length = 100, nullable = false) // Campo obrigatório
-	private String nome;
-	
-	@Column(name = "email", length = 100, nullable = false)
-	private String email;
-	
-	@Column(name = "senha", length = 255, nullable = false)
-	private String senha;
-	
-	@Column(name = "observacao")
-	public String observacao;
+  @Column(name = "email", length = 180, nullable = false)
+  private String email;
 
-	public String getObservacao() {
-		return observacao;
-	}
+  @Column(name = "senha", length = 255, nullable = false)
+  private String senha;
 
-	public void setObservação(String observacao) {
-		this.observacao = observacao;
-	}
+  @Column(name = "observacao")
+  private String observacao;
 
-	public int getId() {
-		return id;
-	}
+  public String getObservacao() {
+    return observacao;
+  }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+  public void setObservacao(String observacao) {
+    this.observacao = observacao;
+  }
 
-	public String getNome() {
-		return nome;
-	}
+  public int getId() {
+    return id;
+  }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+  public void setId(int id) {
+    this.id = id;
+  }
 
-	public String getEmail() {
-		return email;
-	}
+  public String getSenha() {
+    return this.senha;
+  }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+  public void setSenha(String senha) {
+    this.senha = senha;
+  }
 
-	public String getSenha() {
-		return senha;
-	}
+  public String getEmail() {
+    return email;
+  }
 
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+  public void setEmail(String email) {
+    this.email = email;
+  }
 
+  public String getNome() {
+    return nome;
+  }
+
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
 }
